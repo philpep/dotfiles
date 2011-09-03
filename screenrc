@@ -1,0 +1,9 @@
+autodetach on
+vbell off
+defscrollback 5000
+defutf8 on
+caption always '%{=b k}[%{=b W} %0c:%s %{=b k}] %{= W}%?%-Lw%?%{=b R}(%{W}%n%f %t%{=b R})%{= W}%?%+Lw%?'
+startup_message off
+
+
+termcapinfo xterm|rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'

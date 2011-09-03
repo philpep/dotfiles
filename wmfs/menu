@@ -1,0 +1,22 @@
+[menu]
+        [set_menu]
+                name = "rootmenu"
+
+                # place_at_mouse = false
+                # x = 40 y = 50
+
+                fg_focus  = "#191919" bg_focus  = "#7E89A2"
+                fg_normal = "#9F9AB3" bg_normal = "#191919"
+
+                [item] name = "Reload"          func =
+"reload"                                [/item]
+                [item] name = "Quit WMFS"       func =
+"quit"                               [/item]
+                [item] name = "Reboot"          func = "spawn" cmd = "sudo
+shutdown -r now" [/item]
+                [item] name = "Shutdown"        func = "spawn" cmd = "sudo
+shutdown -h now" [/item]
+        [/set_menu]
+[/menu]
+
+

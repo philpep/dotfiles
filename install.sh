@@ -2,7 +2,7 @@
 
 set -e
 
-FILES="gitconfig inputrc screenrc tmux.conf vim vimrc zshrc"
+FILES="gitconfig inputrc tmux.conf vim vimrc zshrc"
 BASEPATH=$(pwd)
 
 if [ -z "${HOME}" ]

@@ -49,7 +49,7 @@ case `uname -s` in
   export LC_ALL="en_US.UTF-8"
   export LANG="en_US.UTF-8"
   export LSCOLORS="exgxfxcxcxdxdxhbadacec"
-  alias man="export PAGER=\"col -b | vim -c 'set ft=man nomod nolist' -\" && man"
+  alias man="PAGER=\"col -b | vim -c 'set ft=man nomod nolist' -\" man"
   alias ls="ls -G"
   alias ll="ls -Glh"
   alias lla="ls -Glha"

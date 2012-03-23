@@ -11,5 +11,7 @@ pgrep urxvtd || urxvtd -q -o -f &
 xset b off
 eval $(ssh-agent)
 export PATH="$HOME/bin:$PATH"
-exec wmfs
-#exec "wmfs 2>&1 | tee -a $LOGFILE"
+while true;
+do
+	dwm
+done

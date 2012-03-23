@@ -6,7 +6,7 @@ static void view_adjacent_tag(const Arg *, int);
 static void focusandmvmon(const Arg *);
 
 /* appearance */
-static const char font[]            = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*";
+static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#222222";
 static const char normbgcolor[]     = "#3f3f3f";
 static const char normfgcolor[]     = "#bebebe";
@@ -19,16 +19,21 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
 
 static const Rule rules[] = {
+	/* xprop(1):
+	 *	WM_CLASS(STRING) = instance, class
+	 *	WM_NAME(STRING) = title
+	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Firefox",  NULL,       NULL,       0,            False,       -1 },
-    { "MPlayer",  NULL,       NULL,       0,            True,        -1},
+	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
 };
 
 /* layout(s) */
 static const float mfact      = 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster      = 1;    /* number of clients in master area */
 static const Bool resizehints = True; /* True means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
@@ -40,26 +45,26 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod1Mask
+#define TAGKEYS(KEY,TAG) \
+	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask,           KEY,      toggletag,     {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+#define RIPDEV(KEY, RANK) { Mod4Mask, KEY, spawn, SHCMD("/home/phil/bin/ripdev.sh --export=/home/phil/bin/ripdev_status.txt --choose_by_rank="RANK)},
+
+
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvtc", NULL };
-static const char *soundup[] = { "mixer", "vol", "+5", NULL };
-static const char *sounddown[] = { "mixer", "vol", "-5", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ ControlMask,                  XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -67,13 +72,30 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY|ControlMask,           XK_Left,   focusandmvmon,  {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_Right,  focusandmvmon,  {.i = +1 } },
-    { ControlMask,                  XK_Left,   view_prev_tag,  {0} },
-    { ControlMask,                  XK_Right,  view_next_tag,  {0} },
-    { MODKEY,                       XK_F3,     spawn,          {.v = sounddown } },
-    { MODKEY,                       XK_F4,     spawn,          {.v = soundup } },
+	{ ControlMask,                  XK_Left,   view_prev_tag,  {0} },
+	{ ControlMask,                  XK_Right,  view_next_tag,  {0} },
+	TAGKEYS(                        XK_1,                      0)
+	TAGKEYS(                        XK_2,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_4,                      3)
+	TAGKEYS(                        XK_5,                      4)
+	TAGKEYS(                        XK_6,                      5)
+	TAGKEYS(                        XK_7,                      6)
+	TAGKEYS(                        XK_8,                      7)
+	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	RIPDEV(                         XK_F1,                     "0")
+	RIPDEV(                         XK_F2,                     "1")
+	RIPDEV(                         XK_F3,                     "2")
+	RIPDEV(                         XK_F4,                     "3")
+	RIPDEV(                         XK_F5,                     "4")
+	RIPDEV(                         XK_F6,                     "5")
+	RIPDEV(                         XK_F7,                     "7")
+	RIPDEV(                         XK_F8,                     "8")
+	RIPDEV(                         XK_F9,                     "9")
 };
 
 /* button definitions */
@@ -92,8 +114,6 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
-
 
 static void
 view_adjacent_tag(const Arg *arg, int distance)
@@ -147,10 +167,11 @@ focusandmvmon(const Arg *arg)
 	if (!mons->next)
 		return;
 	m = dirtomon(arg->i);
-	unfocus(selmon->sel);
+	unfocus(selmon->sel, False);
 	selmon = m;
 	focus(NULL);
 	XWarpPointer(dpy, None, RootWindow(dpy, DefaultScreen(dpy)), 0, 0, 0, 0,
 			selmon->mx + selmon->mw / 2, selmon->my + selmon->mh /2 );
 }
+
 

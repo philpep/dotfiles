@@ -4,7 +4,7 @@ LOGFILE="$HOME/.xserver.log"
 numlockx &
 #setxkbmap -model pc105 -layout fr
 #xrandr --output LVDS --mode 1280x800
-urxvtd -q -o -f &
+pgrep urxvtd || urxvtd -q -o -f &
 #hsetroot -fill $HOME/photos/bg/freebsd.png &
 #synclient TapButton1=1
 #synclient HorizTwoFingerScroll=1

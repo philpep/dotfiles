@@ -1,0 +1,13 @@
+--- dzen/config.mk.orig	2012-03-23 20:20:49.478872624 +0100
++++ dzen/config.mk	2012-03-23 20:21:05.843156914 +0100
+@@ -49,8 +49,8 @@
+ 
+ 
+ ## Option 7: With Xinerama and XPM and XFT
+-#LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 -lXinerama -lXpm `pkg-config --libs xft`
+-#CFLAGS = -Wall -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT `pkg-config --cflags xft`
++LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 -lXinerama -lXpm `pkg-config --libs xft`
++CFLAGS = -Wall -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT `pkg-config --cflags xft`
+ 
+ 
+ 

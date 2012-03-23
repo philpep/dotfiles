@@ -18,6 +18,9 @@ set novisualbell
 set history=100
 set undolevels=150
 
+" hilight
+set hls
+
 " Don't show these file during completion
 set suffixes+=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo,.mod
 

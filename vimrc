@@ -39,10 +39,6 @@ set ruler
 " Folding
 set foldmethod=marker
 
-" shiftwidth
-set sw=4
-set ts=4
-
 " show tab and spaces
 set list
 set lcs:tab:>-,trail:.

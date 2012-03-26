@@ -173,7 +173,13 @@ function precmd
   local cwd="%{${path_color}%}%48<...<%~"
   local sign="%(!.%{${fg_bold[red]}%}.${deco})%#"
 
-  PS1="${return_code}${deco}(${user_at_host} ${cwd}${git_branch}${deco}) ${sign}%{${reset_color}%} "
+  if [[ -n ${VIRTUAL_ENV} ]]; then
+    local venv="(`basename $VIRTUAL_ENV`)"
+  else
+    local venv=""
+  fi
+
+  PS1="${return_code}${deco}${venv}(${user_at_host} ${cwd}${git_branch}${deco}) ${sign}%{${reset_color}%} "
 }
 
 

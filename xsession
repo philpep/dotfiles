@@ -10,6 +10,7 @@ pgrep urxvtd || urxvtd -q -o -f &
 #synclient HorizTwoFingerScroll=1
 xset b off
 eval $(ssh-agent)
+eval $(gpg-agent --daemon)
 export PATH="$HOME/bin:$PATH"
 while true;
 do

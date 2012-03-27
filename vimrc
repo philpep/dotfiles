@@ -79,6 +79,7 @@ autocmd BufRead,BufNewFile *.conkyrc set ft=conkyrc
 autocmd BufRead,BufNewFile *.html,*.mako set ft=mako
 autocmd BufRead,BufNewFile *.pgc set ft=c
 autocmd BufRead,BufNewFile *.pde set ft=c
+autocmd BufRead,BufNewFile *.j2 set ft=htmljinja
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 
 syntax on

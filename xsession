@@ -9,6 +9,7 @@ pgrep urxvtd || urxvtd -q -o -f &
 #synclient TapButton1=1
 #synclient HorizTwoFingerScroll=1
 xset b off
+nitrogen --restore
 eval $(ssh-agent)
 eval $(gpg-agent --daemon)
 export PATH="$HOME/bin:$PATH"

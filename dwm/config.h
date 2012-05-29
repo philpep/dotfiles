@@ -93,9 +93,10 @@ static Key keys[] = {
 	RIPDEV(                         XK_F4,                     "3")
 	RIPDEV(                         XK_F5,                     "4")
 	RIPDEV(                         XK_F6,                     "5")
-	RIPDEV(                         XK_F7,                     "7")
-	RIPDEV(                         XK_F8,                     "8")
-	RIPDEV(                         XK_F9,                     "9")
+	RIPDEV(                         XK_F7,                     "6")
+	RIPDEV(                         XK_F8,                     "7")
+	RIPDEV(                         XK_F9,                     "8")
+	RIPDEV(                         XK_F10,                    "9")
 };
 
 /* button definitions */

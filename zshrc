@@ -56,10 +56,14 @@ case `uname -s` in
   alias lll="ls -Glh | less"
   alias grep="grep --colour"
   alias mount_iomega="mount -t msdosfs -o large,-L=en_US.UTF-8,-u=1003,-g=1003 /dev/da0s1 /mnt/IOMEGA"
+  alias cp='cp -v'
+  alias mv='mv -v'
+  alias rm='rm -v'
   kbdcontrol -b off
   ;;
   OpenBSD)
   export PKG_PATH="http://ftp.fr.openbsd.org/pub/OpenBSD/$(uname -r)/packages/$(uname -m)/"
+  which colorls >/dev/null 2>&1 && alias ls="colorls -G"
   ;;
   Linux)
   if [[ -r ~/.dir_colors ]]; then
@@ -74,13 +78,13 @@ case `uname -s` in
   alias grep='grep --color=auto'
   export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""
   export PATH="$HOME/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+  alias cp='cp -v'
+  alias mv='mv -v'
+  alias rm='rm -v'
   ;;
 esac
 
 
-alias cp='cp -v'
-alias mv='mv -v'
-alias rm='rm -v'
 alias xs='cd'
 alias sl='ls'
 alias :e="\$EDITOR"

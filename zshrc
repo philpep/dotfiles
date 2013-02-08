@@ -177,6 +177,10 @@ function precmd
   local cwd="%{${path_color}%}%48<...<%~"
   local sign="%(!.%{${fg_bold[red]}%}.${deco})%#"
 
+  if readlink -f .local/bin/activate | grep -q "^$HOME/venvs/"; then
+      source .local/bin/activate
+  fi
+
   if [[ -n ${VIRTUAL_ENV} ]]; then
     local venv="(`basename $VIRTUAL_ENV`)"
   else

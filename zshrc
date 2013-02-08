@@ -193,4 +193,8 @@ function precmd
 
 # }}}
 
+__git_files () {
+  _wanted files expl 'local files' _files
+}
+
 # vim:filetype=zsh:tabstop=8:shiftwidth=2:fdm=marker:

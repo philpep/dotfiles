@@ -21,6 +21,9 @@ set undolevels=150
 " hilight
 set hls
 
+set ts=4
+set sw=4
+
 " Don't show these file during completion
 set suffixes+=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo,.mod
 
@@ -99,3 +102,5 @@ map <A-Right> gt
 map <A-Left> gT
 
 colo desert
+
+call pathogen#infect()

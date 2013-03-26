@@ -23,7 +23,7 @@ export GREP_COLOR=31
 HISTFILE=~/.histfile
 HISTSIZE=5000
 SAVEHIST=5000
-setopt append_history hist_ignore_all_dups hist_reduce_blanks
+setopt append_history hist_ignore_all_dups hist_reduce_blanks interactivecomments
 setopt autocd
 unsetopt beep
 unsetopt notify

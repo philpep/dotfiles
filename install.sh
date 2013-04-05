@@ -3,7 +3,7 @@
 set -e
 
 FILES="gitconfig inputrc tmux.conf vim vimrc zshrc"
-BASEPATH=$(pwd)
+BASEPATH=$(dirname $0)
 
 if [ -z "${HOME}" ]
 then

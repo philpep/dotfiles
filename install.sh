@@ -2,18 +2,11 @@
 
 set -e
 
-FILES="gitconfig inputrc tmux.conf vim vimrc zshrc"
-BASEPATH=$(cd $(dirname $0); pwd)
+[ -z "$HOME" ] && echo "[!] Need \$HOME set" && exit 1
 
-if [ -z "${HOME}" ]
-then
-	echo "[!] need \$HOME set"
-	exit 1
-fi
+HERE=$(dirname $(readlink -f $0))
 
-for file in $FILES
-do
-	src="${BASEPATH}/${file}"
-	dst="${HOME}/.${file}"
-	ln -sfn "${src}" "${dst}"
+for f in gitconfig tmux.conf vim vimrc zshrc; do
+	echo ln -fsn $HERE/$f $HOME/.$f
+	ln -fsn $HERE/$f $HOME/.$f
 done

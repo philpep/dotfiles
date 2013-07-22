@@ -7,9 +7,6 @@ set nocompatible
 " 3 lines visible around the cursor
 set scrolloff=3
 
-" Shell to use with :sh
-set shell=zsh
-
 " No bells
 set errorbells
 set novisualbell
@@ -23,6 +20,7 @@ set hls
 
 set ts=4
 set sw=4
+set tw=0
 
 " Don't show these file during completion
 set suffixes+=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo,.mod
@@ -44,7 +42,7 @@ set foldmethod=marker
 
 " show tab and spaces
 set list
-set lcs:tab:>-,trail:.
+set lcs:tab:>-,trail:.,nbsp:_
 
 " paste/nopaste
 set pastetoggle=<F11>
@@ -65,10 +63,16 @@ else
 	set backupdir=$HOME/.vim/backup
 endif
 
-filetype on
-filetype plugin on
-filetype indent on
-autocmd FileType text setlocal textwidth=78
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/syntastic'
+Bundle 'Glench/Vim-Jinja2-Syntax'
+Bundle 'philpep/vim-rst-tables'
+
+filetype plugin indent on
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
@@ -77,14 +81,10 @@ autocmd BufReadPost *
 			\   exe "normal! g`\"" |
 			\ endif
 
-autocmd BufRead,BufNewFile lighttpd.conf set ft=conf
-autocmd BufRead,BufNewFile *.conkyrc set ft=conkyrc
-autocmd BufRead,BufNewFile *.html,*.mako set ft=mako
+autocmd FileType text set tw=78
+autocmd Filetype yaml set ts=2 sw=2
 autocmd BufRead,BufNewFile *.pgc set ft=c
 autocmd BufRead,BufNewFile *.pde set ft=c
-autocmd BufRead,BufNewFile *.j2 set ft=htmljinja
-autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-
 syntax on
 
 " :Man
@@ -94,13 +94,8 @@ let $PAGER='less'
 let $MANPAGER='less'
 
 " Mappings
-map <F2> :BufExplorer<CR>
 map <F5> <Esc>gg=G''
-map <F6> :TlistToggle<CR>
-map <F7> :TlistUpdate<CR>
-map <A-Right> gt
-map <A-Left> gT
+map ,,c :python ReformatTable()<CR>
+map ,,f :python ReflowTable()<CR>
 
 colo desert
-
-call pathogen#infect()

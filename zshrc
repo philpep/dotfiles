@@ -11,19 +11,13 @@
 # http://philpep.org
 # Thanks to Geekounet http://poildetroll.net
 
-# {{{ Environnement
-
 export EDITOR=vim
 export GREP_COLOR=31
-
-# }}}
-
-# {{{ Global config
-
+export PIP_DOWNLOAD_CACHE=~/.pip-download-cache
 HISTFILE=~/.histfile
-HISTSIZE=5000
-SAVEHIST=5000
-setopt append_history hist_ignore_all_dups hist_reduce_blanks interactivecomments
+HISTSIZE=10000
+SAVEHIST=10000
+setopt append_history hist_ignore_all_dups hist_reduce_blanks
 setopt autocd
 unsetopt beep
 unsetopt notify
@@ -34,15 +28,7 @@ colors
 
 watch=all
 
-# }}}
-
-# {{{ keys
-
 bindkey -e
-
-# }}}
-
-# {{{ Aliases
 
 case `uname -s` in
   FreeBSD)
@@ -55,7 +41,6 @@ case `uname -s` in
   alias lla="ls -Glha"
   alias lll="ls -Glh | less"
   alias grep="grep --colour"
-  alias mount_iomega="mount -t msdosfs -o large,-L=en_US.UTF-8,-u=1003,-g=1003 /dev/da0s1 /mnt/IOMEGA"
   alias cp='cp -v'
   alias mv='mv -v'
   alias rm='rm -v'
@@ -77,7 +62,7 @@ case `uname -s` in
   alias lll='ls --color=auto -lh | less'
   alias grep='grep --color=auto'
   export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""
-  export PATH="$HOME/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+  export PATH="$HOME/.rvm/bin:$HOME/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
   alias cp='cp -v'
   alias mv='mv -v'
   alias rm='rm -v'
@@ -94,7 +79,6 @@ alias less='less -r'
 alias more='less -r'
 alias c='clear'
 alias exit="clear; exit"
-alias bashfr="lynx --dump --display_charset=utf8 \"http://www.bashfr.org/?sort=random2\" | awk '\$1~\"#\" && \$0!~\"RSS\" { getline; while (\$1!~\"#\") { print \$0; getline;}; exit}'"
 alias top-10="sed -e 's/sudo //' $HOME/.histfile |  cut -d' ' -f1 | sort | uniq -c | sort -rg | head"
 
 # per extentions
@@ -102,10 +86,6 @@ alias -s pdf="epdfview"
 alias -s png="eog"
 alias -s jpg="eog"
 alias -s gif="eog"
-
-# }}}
-
-# {{{ Completion 
 
 autoload -Uz compinit
 compinit
@@ -127,10 +107,6 @@ zstyle ':completion:*:mv:*' ignore-line yes
 zstyle ':completion:*:cp:*' ignore-line yes
 
 
-
-# }}}
-
-# {{{ Functions
 # Convert * to mp3 files
 function 2mp3() 
 {
@@ -163,7 +139,7 @@ function precmd
   fi
 
   if [[ -e ".git/HEAD" ]]; then
-    local git_branch=" [`awk -F'/' '{ print $3 }' .git/HEAD`]"
+    local git_branch=" [`awk '{split($0, a, "refs/heads/")} END { print a[2] }' .git/HEAD`]"
   else
     local git_branch=""
   fi
@@ -179,6 +155,8 @@ function precmd
 
   if readlink -f .local/bin/activate | grep -q "^$HOME/venvs/"; then
       source .local/bin/activate
+  else
+      #deactivate >/dev/null 2>&1
   fi
 
   if [[ -n ${VIRTUAL_ENV} ]]; then
@@ -189,9 +167,6 @@ function precmd
 
   PS1="${return_code}${deco}${venv}(${user_at_host} ${cwd}${git_branch}${deco}) ${sign}%{${reset_color}%} "
 }
-
-
-# }}}
 
 __git_files () {
   _wanted files expl 'local files' _files

@@ -18,6 +18,8 @@ set undolevels=150
 " hilight
 set hls
 
+set et
+set smarttab
 set ts=4
 set sw=4
 set tw=0
@@ -85,6 +87,7 @@ autocmd FileType text set tw=78
 autocmd Filetype yaml set ts=2 sw=2
 autocmd BufRead,BufNewFile *.pgc set ft=c
 autocmd BufRead,BufNewFile *.pde set ft=c
+autocmd BufRead,BufNewFile *.j2 set ft=jinja
 syntax on
 
 " :Man

@@ -14,6 +14,7 @@
 export EDITOR=vim
 export GREP_COLOR=31
 export PYENV_ROOT="$HOME/.pyenv"
+export GOPATH="$HOME/src/go"
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
@@ -62,7 +63,7 @@ case `uname -s` in
   alias lll='ls --color=auto -lh | less'
   alias grep='grep --color=auto'
   export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""
-  export PATH="$HOME/.pyenv/bin:$HOME/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+  export PATH="$GOPATH/bin:$HOME/.pyenv/bin:$HOME/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
   alias cp='cp -v'
   alias mv='mv -v'
   alias rm='rm -v'

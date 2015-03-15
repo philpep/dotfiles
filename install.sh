@@ -6,7 +6,7 @@ set -e
 
 HERE=$(dirname $(readlink -f $0))
 
-for f in gitconfig tmux.conf vim vimrc zshrc; do
+for f in gitconfig tmux.conf vim vimrc zshrc pythonstartup; do
 	echo ln -fsn $HERE/$f $HOME/.$f
 	ln -fsn $HERE/$f $HOME/.$f
 done

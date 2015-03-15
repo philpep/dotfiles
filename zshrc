@@ -14,6 +14,7 @@
 export EDITOR=vim
 export GREP_COLOR=31
 export PYENV_ROOT="$HOME/.pyenv"
+export PYTHONSTARTUP=~/.pythonstartup
 export GOPATH="$HOME/src/go"
 HISTFILE=~/.histfile
 HISTSIZE=10000

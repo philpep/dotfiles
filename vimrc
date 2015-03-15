@@ -89,6 +89,7 @@ autocmd Filetype yaml set ts=2 sw=2
 autocmd BufRead,BufNewFile *.pgc set ft=c
 autocmd BufRead,BufNewFile *.pde set ft=c
 autocmd BufRead,BufNewFile *.j2 set ft=jinja
+autocmd BufRead,BufNewFile *.go set noet nolist
 syntax on
 
 " :Man

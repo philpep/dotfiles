@@ -55,6 +55,7 @@ set backspace=indent,eol,start
 " For syntaxt/2html.vim
 let use_xhtml=1
 let html_ignore_folding=1
+let g:vim_markdown_folding_disabled=1
 
 " Backup
 set backup

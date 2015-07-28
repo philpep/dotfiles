@@ -4,7 +4,6 @@
 
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    fixup = "!f(){ msg=$(git show HEAD -s --pretty=tformat:'fixup! %s') ; git commit -m \"$msg\" \"$@\" && git rebase -i --autosquash HEAD^^ ; } ; f"
 
 [color]
 	branch = auto

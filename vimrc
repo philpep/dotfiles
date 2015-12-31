@@ -18,11 +18,9 @@ set undolevels=150
 " hilight
 set hls
 
-set et
-set smarttab
 set ts=4
 set sw=4
-set tw=0
+set lcs:tab:>-,trail:.,nbsp:_
 
 " Don't show these file during completion
 set suffixes+=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo,.mod
@@ -41,10 +39,6 @@ set ruler
 
 " Folding
 set foldmethod=marker
-
-" show tab and spaces
-set list
-set lcs:tab:>-,trail:.,nbsp:_
 
 " paste/nopaste
 set pastetoggle=<F11>
@@ -85,8 +79,13 @@ autocmd BufReadPost *
 			\   exe "normal! g`\"" |
 			\ endif
 
+autocmd Filetype python set tw=0 smarttab et list
+autocmd Filetype dosini set tw=0 smarttab et list
+autocmd FileType sh set et list
 autocmd FileType text set tw=78
 autocmd Filetype yaml set ts=2 sw=2
+autocmd FileType html set ts=2 sw=2
+autocmd FileType coffee set ts=2 sw=2
 autocmd BufRead,BufNewFile *.pgc set ft=c
 autocmd BufRead,BufNewFile *.pde set ft=c
 autocmd BufRead,BufNewFile *.j2 set ft=jinja

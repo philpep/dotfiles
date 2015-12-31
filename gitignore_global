@@ -1,1 +1,7 @@
 *.swp
+*.pyc
+*.egg-info
+__pycache__
+.tox
+.vagrant*
+junit*.xml

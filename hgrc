@@ -1,0 +1,10 @@
+[ui]
+username = Philippe Pepiot <phil@philpep.org>
+
+[pager]
+pager = LESS='FRX' less
+
+[extensions]
+pager =
+color =
+rebase =

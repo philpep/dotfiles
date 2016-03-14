@@ -157,7 +157,7 @@ function precmd
   local cwd="%{${path_color}%}%48<...<%~"
   local sign="%(!.%{${fg_bold[red]}%}.${deco})%#"
 
-  if readlink -f .local/bin/activate | grep -q "^$HOME/venvs/"; then
+  if readlink -f .local/bin/activate | grep -Eq "^($HOME/venvs/|$HOME/local)"; then
       source .local/bin/activate
   else
       #deactivate >/dev/null 2>&1

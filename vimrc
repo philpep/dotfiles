@@ -31,7 +31,7 @@ set ignorecase
 set smartcase
 
 " spell
-set spelllang=fr
+set spelllang=en
 
 " Statusline
 set laststatus=2

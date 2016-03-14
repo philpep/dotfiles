@@ -1,10 +1,25 @@
 [ui]
 username = Philippe Pepiot <phil@philpep.org>
+merge = vimdiff
+
+[alias]
+lg = log -G --template '{short(node)} - {if(tag, "{tag}")}{firstline(desc)} ({age(date)}) <{person(author)}>\n'
 
 [pager]
 pager = LESS='FRX' less
+attend = annotate, cat, diff, export, glog, log, qdiff, lg, help
 
 [extensions]
 pager =
 color =
 rebase =
+record =
+shelve =
+histedit =
+transplant =
+purge =
+
+[merge-tools]
+vimdiff.excutable = vim
+vimdiff.args = -f -d $output -M $local $base $other -c "wincmd J" -c "set modifiable" -c "set write"
+vimdiff.premerge = keep

@@ -69,6 +69,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Glench/Vim-Jinja2-Syntax'
 Bundle 'philpep/vim-rst-tables'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'saltstack/salt-vim'
 
 filetype plugin indent on
 " When editing a file, always jump to the last known cursor position.

@@ -99,6 +99,7 @@ nnoremap K :Man <cword><CR>
 let $PAGER='less'
 let $MANPAGER='less'
 let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_python_checkers = ['python', 'flake8']
 
 " Mappings
 map <F5> <Esc>gg=G''

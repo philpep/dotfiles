@@ -2,6 +2,10 @@
 username = Philippe Pepiot <phil@philpep.org>
 merge = vimdiff
 
+[diff]
+git = 1
+showfunc = 1
+
 [alias]
 lg = log -G --template '{short(node)} - {if(tag, "{tag}")}{firstline(desc)} ({age(date)}) <{person(author)}>\n'
 

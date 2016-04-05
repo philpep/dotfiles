@@ -18,6 +18,7 @@ shelve =
 histedit =
 transplant =
 purge =
+terse-status = ~/.hgrc.d/terse-status.py
 
 [merge-tools]
 vimdiff.excutable = vim

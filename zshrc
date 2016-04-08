@@ -15,6 +15,7 @@ export EDITOR=vim
 export GREP_COLOR=31
 export PYENV_ROOT="$HOME/.pyenv"
 export PYTHONSTARTUP=~/.pythonstartup
+export NPM_PACKAGES="$HOME/.local/node_modules"
 export GOPATH="$HOME/src/go"
 export DEBEMAIL=phil@philpep.org
 export DEBFULLNAME="Philippe Pepiot"
@@ -66,7 +67,7 @@ case `uname -s` in
   alias lll='ls --color=auto -lh | less'
   alias grep='grep --color=auto'
   export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""
-  export PATH="$GOPATH/bin:$HOME/.pyenv/bin:$HOME/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+  export PATH="$NPM_PACKAGES/bin:$GOPATH/bin:$HOME/.pyenv/bin:$HOME/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
   alias cp='cp -v'
   alias mv='mv -v'
   alias rm='rm -v'

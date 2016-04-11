@@ -131,8 +131,6 @@ function 2html()
   done
 }
 
-function grrep() { hg files -0 | xargs -0 grep --color=always $* | less -FRX }
-
 function precmd
 {
   local deco="%{${fg_bold[black]}%}"

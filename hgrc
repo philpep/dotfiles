@@ -8,7 +8,7 @@ showfunc = 1
 
 [alias]
 lg = log -G --template '{short(node)} - {if(tag, "{tag}")}{firstline(desc)} ({age(date)}) <{person(author)}>\n'
-grrep = !$HG files -0 | xargs -0 grep --color=always $@ | less -FRX
+grrep = !$HG files -0 | xargs -0 grep --color=always "$@" | less -FRX
 
 [pager]
 pager = LESS='FRX' less

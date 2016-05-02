@@ -1,6 +1,7 @@
 [ui]
 username = Philippe Pepiot <phil@philpep.org>
 merge = vimdiff
+ignore = ~/.hgignore_global
 
 [diff]
 git = 1

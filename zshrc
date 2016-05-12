@@ -67,7 +67,7 @@ case `uname -s` in
   alias lll='ls --color=auto -lh | less'
   alias grep='grep --color=auto'
   export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""
-  export PATH="$NPM_PACKAGES/bin:$GOPATH/bin:$HOME/.pyenv/bin:$HOME/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+  export PATH="$HOME/.local/bin:$NPM_PACKAGES/bin:$GOPATH/bin:$HOME/.pyenv/bin:$HOME/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
   alias cp='cp -v'
   alias mv='mv -v'
   alias rm='rm -v'

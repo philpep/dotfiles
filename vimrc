@@ -70,6 +70,7 @@ Bundle 'Glench/Vim-Jinja2-Syntax'
 Bundle 'philpep/vim-rst-tables'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'saltstack/salt-vim'
+Bundle 'altercation/solarized', {'rtp': 'vim-colors-solarized'}
 
 filetype plugin indent on
 " When editing a file, always jump to the last known cursor position.
@@ -92,6 +93,8 @@ autocmd BufRead,BufNewFile *.pde set ft=c
 autocmd BufRead,BufNewFile *.j2 set ft=jinja
 autocmd BufRead,BufNewFile *.go set noet nolist
 syntax on
+set background=dark
+colorscheme solarized
 
 " :Man
 runtime ftplugin/man.vim
@@ -106,4 +109,4 @@ map <F5> <Esc>gg=G''
 map ,,c :python ReformatTable()<CR>
 map ,,f :python ReflowTable()<CR>
 
-colo desert
+"colo desert

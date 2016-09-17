@@ -10,3 +10,6 @@ for f in gitconfig tmux.conf vim vimrc zshrc pythonstartup gitignore_global hgrc
 	echo ln -fsn $HERE/$f $HOME/.$f
 	ln -fsn $HERE/$f $HOME/.$f
 done
+
+mkdir -p $HOME/.config/xfce4/terminal
+ln -fsn $HERE/xfce4-terminalrc $HOME/.config/xfce4/terminal/terminalrc

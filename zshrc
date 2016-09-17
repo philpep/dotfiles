@@ -133,15 +133,7 @@ function 2html()
 
 function precmd
 {
-  local deco="%{${fg_bold[black]}%}"
-
-  if [[ -O "$PWD" ]]; then
-    local path_color="${fg_no_bold[white]}"
-  elif [[ -w "$PWD" ]]; then
-    local path_color="${fg_no_bold[blue]}"
-  else
-    local path_color="${fg_no_bold[red]}"
-  fi
+  local deco="%{${fg_bold[default]}%}"
 
   if [[ -e ".git/HEAD" ]]; then
     local git_branch=" [`awk '{split($0, a, "refs/heads/")} END { print a[2] }' .git/HEAD`]"
@@ -149,13 +141,11 @@ function precmd
     local git_branch=""
   fi
 
-  local host_color="${fg_bold[default]}"
-
   local yellow="%{${fg_bold[yellow]}%}"
 
   local return_code="%(?..${deco}!%{${fg_no_bold[red]}%}%?${deco}! )"
-  local user_at_host="%{${fg_bold[red]}%}%n${yellow}@%{${host_color}%}%m"
-  local cwd="%{${path_color}%}%48<...<%~"
+  local user_at_host="%{${fg_bold[red]}%}%n${yellow}@%{${deco}%}%m"
+  local cwd="%{${deco}%}%48<...<%~"
   local sign="%(!.%{${fg_bold[red]}%}.${deco})%#"
 
   if readlink -f .local/bin/activate | grep -Eq "^($HOME/venvs/|$HOME/local)"; then

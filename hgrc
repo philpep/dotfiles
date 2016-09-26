@@ -2,18 +2,35 @@
 username = Philippe Pepiot <phil@philpep.org>
 merge = vimdiff
 ignore = ~/.hgignore_global
+style = phases
+
+[templates]
+git = '\033[0;33mcommit: {node}\n\033[0mAuthor: {author}\nDate:   {date|rfc822date}\nBranch: {branch}\nPhase:  {phase}\n\n\t{desc|strip|fill68|tabindent}\n\n'
+gitshort = '\033[32m{node|short} \033[33m{date|shortdate} \033[35m{author|person} \033[0;34m{desc|firstline}\n'
 
 [diff]
 git = 1
 showfunc = 1
 
 [alias]
-lg = log -G --template '{short(node)} - {if(tag, "{tag}")}{firstline(desc)} ({age(date)}) <{person(author)}>\n'
-grrep = !$HG files -0 | xargs -0 grep --color=always "$@" | less -FRX
+log = log -v -T git
+lg = log -G --template="\033[31m{node|short}\033[0m - {desc|firstline} \033[32m({age(date)}) \033[94m<{author|person}>\n"
+grrep = grepfile
+show = log -v -p --template=phases -r $1
+contains = log -r $1 --template="{latesttag}\n"
+wdiff = ! hg diff $@ | wdiff -n -d -w '[31m' -x '[0m' -y '[32m' -z '[0m' | sed -e 's:^@@:[35m@@:' -e 's:@@$:@@[0m:' -e 's:^diff -r:[35;1mdiff -r:' | LESS='--no-init --quit-if-one-screen -R' less
+shortlog = !$HG log -T '{author}\n' | sort | uniq -c | sort -rn | LESS='FRXS' less
 
 [pager]
-pager = LESS='FRX' less
-attend = annotate, cat, diff, export, glog, log, qdiff, lg, help
+pager = LESS='FRXS' less
+attend = annotate, cat, diff, export, glog, log, qdiff, lg, help, show, shortlog
+
+[phases]
+publish = False
+new-commit = draft
+
+[revsetalias]
+pub = heads(public()) and branch(.)
 
 [extensions]
 pager =
@@ -25,6 +42,8 @@ histedit =
 transplant =
 purge =
 terse-status = ~/.hgrc.d/terse-status.py
+grepfile = ~/.hgrc.d/grepfile.py
+patchbomb =
 
 [merge-tools]
 vimdiff.excutable = vim

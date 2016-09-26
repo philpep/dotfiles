@@ -82,6 +82,7 @@ autocmd BufReadPost *
 			\ endif
 
 autocmd Filetype python set tw=0 smarttab et list
+autocmd Filetype javascript set tw=0 smarttab et list
 autocmd Filetype dosini set tw=0 smarttab et list
 autocmd FileType sh set et list
 autocmd FileType text set tw=78

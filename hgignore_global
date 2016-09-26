@@ -8,3 +8,4 @@ __pycache__
 junit*.xml
 .local
 .cache
+test/data/database/*tmpdb*

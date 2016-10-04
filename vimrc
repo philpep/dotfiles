@@ -95,10 +95,14 @@ autocmd BufRead,BufNewFile *.j2 set ft=jinja
 autocmd BufRead,BufNewFile *.go set noet nolist
 syntax on
 set background=dark
-try
-	colorscheme solarized
-catch /^Vim\%((\a\+)\)\=:E185/
-endtry
+if &diff
+	colorscheme evening
+else
+	try
+		colorscheme solarized
+	catch /^Vim\%((\a\+)\)\=:E185/
+	endtry
+endif
 
 
 " :Man

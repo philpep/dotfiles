@@ -70,6 +70,7 @@ case `uname -s` in
   alias grep='grep --color=auto'
   export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""
   export PATH="$HOME/.local/bin:$NPM_PACKAGES/bin:$GOPATH/bin:$HOME/.pyenv/bin:$HOME/bin:/usr/lib/postgresql/9.4/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+  export PAGER='less -FRXS'
   alias cp='cp -v'
   alias mv='mv -v'
   alias rm='rm -v'

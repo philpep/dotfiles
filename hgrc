@@ -16,15 +16,14 @@ showfunc = 1
 
 [alias]
 log = log -v -T git
-lg = ! $HG log -G -T gitshort $@ | sed '/^[| \n]*$/d' 2>/dev/null | LESS='FRXS' less
+lg = ! $HG log -G -T gitshort $@ | sed '/^[| :\n\\]*$/d' 2>/dev/null | $PAGER
 grrep = grepfile --rev . --line-number
 show = log --stat -v -p --template=phases -r $1
 contains = log -r $1 --template="{latesttag}\n"
-wdiff = ! $HG diff $@ | wdiff -n -d -w '[31m' -x '[0m' -y '[32m' -z '[0m' | sed -e 's:^@@:[35m@@:' -e 's:@@$:@@[0m:' -e 's:^diff -r:[35;1mdiff -r:' | LESS='--no-init --quit-if-one-screen -R' less
-shortlog = !$HG log -T '{author}\n' | sort | uniq -c | sort -rn | LESS='FRXS' less
+wdiff = ! $HG diff $@ | wdiff -n -d -w '[31m' -x '[0m' -y '[32m' -z '[0m' | sed -e 's:^@@:[35m@@:' -e 's:@@$:@@[0m:' -e 's:^diff -r:[35;1mdiff -r:' | $PAGER
+shortlog = !$HG log -T '{author}\n' $@ | sort | uniq -c | sort -rn | $PAGER
 
 [pager]
-pager = LESS='FRXS' less
 attend = annotate, cat, diff, export, glog, log, qdiff, lg, help, show, shortlog, grrep, grepfile
 
 [phases]

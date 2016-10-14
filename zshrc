@@ -67,6 +67,7 @@ case `uname -s` in
   alias ll='ls --color=auto -lh'
   alias lla='ls --color=auto -lha'
   alias lll='ls --color=auto -lh | less'
+  which chg 2>/dev/null >/dev/null && alias hg=chg
   alias grep='grep --color=auto'
   export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""
   export PATH="$HOME/.local/bin:$NPM_PACKAGES/bin:$GOPATH/bin:$HOME/.pyenv/bin:$HOME/bin:/usr/lib/postgresql/9.4/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"

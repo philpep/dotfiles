@@ -16,11 +16,12 @@ showfunc = 1
 [alias]
 log = log -v -T git
 lg = ! $HG log -G -T gitshort '$@' | sed '/^[| :\n\\]*$/d' 2>/dev/null | $PAGER
-grrep = ! $HG files -0 $2 $3 $4 $5 $6 $7 $8 $9 | xargs -0 grep --color=always -n -H '$1'
+grrep = ! $HG files -0 $2 $3 $4 $5 $6 $7 $8 $9 | xargs -0 grep --color=always -n -H '$1' | $PAGER
 show = log --stat -v -p --template=phases -r $1
 contains = log -r $1 --template="{latesttag}\n"
 wdiff = ! $HG diff $@ | wdiff -n -d -w '[31m' -x '[0m' -y '[32m' -z '[0m' | sed -e 's:^@@:[35m@@:' -e 's:@@$:@@[0m:' -e 's:^diff -r:[35;1mdiff -r:' | $PAGER
 shortlog = !$HG log -T '{author}\n' $@ | sort | uniq -c | sort -rn | $PAGER
+review = show-review -r 'ancestors(.) and draft()'
 
 [pager]
 attend-help = true
@@ -32,6 +33,8 @@ new-commit = draft
 
 [revsetalias]
 pub = heads(public()) and branch(.)
+wip = sort(ancestors(.) and draft(), -rev)
+origin = last(wip)
 
 [extensions]
 pager =

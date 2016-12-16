@@ -60,6 +60,14 @@ else
 	set backupdir=$HOME/.vim/backup
 endif
 
+" Swap files
+if filewritable("$HOME/.vim/swap") == 2
+    set dir=$HOME/.vim/swap
+else
+	call system("mkdir -p $HOME/.vim/swap")
+	set dir=$HOME/.vim/swap
+endif
+
 filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()

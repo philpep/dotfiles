@@ -114,6 +114,7 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*:rm:*' ignore-line yes
 zstyle ':completion:*:mv:*' ignore-line yes
 zstyle ':completion:*:cp:*' ignore-line yes
+compdef chg='hg'
 
 
 # Convert * to mp3 files

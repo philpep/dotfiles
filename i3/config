@@ -84,6 +84,9 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# lock screen
+bindsym $mod+Delete exec i3lock -c 000000 -d
+
 # focus the parent container
 bindsym $mod+q focus parent
 

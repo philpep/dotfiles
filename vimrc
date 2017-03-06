@@ -94,9 +94,6 @@ autocmd Filetype javascript set tw=0 smarttab et list
 autocmd Filetype dosini set tw=0 smarttab et list
 autocmd FileType sh set et list
 autocmd FileType text set tw=78
-autocmd Filetype yaml set ts=2 sw=2
-autocmd FileType html set ts=2 sw=2
-autocmd FileType coffee set ts=2 sw=2
 autocmd BufRead,BufNewFile *.pgc set ft=c
 autocmd BufRead,BufNewFile *.pde set ft=c
 autocmd BufRead,BufNewFile *.j2 set ft=jinja

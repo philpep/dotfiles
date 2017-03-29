@@ -7,7 +7,7 @@ mergemarkers = detailed
 
 [templates]
 git = '\033[0;33mcommit: {rev} {node}\n\033[0mAuthor: {author}\nDate:   {date|rfc822date}\nBranch: {branch}\nPhase:  {phase}\n\n\t{desc|strip|fill68|tabindent}\n\n'
-gitshort = '\033[31m{shortest(node, 7)}\033[0m - \033[33m{ifeq(phase, "public", "", "({phase}) ")}{if(tags, "(tags: {tags}) ")}{ifcontains(rev, revset("head()"), "(branch: {branch}) ")}{if(topics, "(topics: {topics}) ")}\033[0m{desc|firstline} \033[32m({age(date)}) \033[94m<{author|person}> {ifeq(rev, revset('.'), '*')}\n'
+gitshort = '\033[31m{shortest(node, 7)}\033[0m - \033[95m{ifeq(phase, "public", "", "({phase}) ")}\033[33m{if(tags, "(tags: {tags}) ")}{ifcontains(rev, revset("head()"), "(branch: {branch}) ")}{if(topics, "(topics: {topics}) ")}\033[0m{desc|firstline} \033[32m({age(date)}) \033[94m<{author|person}> {ifeq(rev, revset('.'), '*')}\n'
 
 [diff]
 git = 1

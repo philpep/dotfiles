@@ -15,7 +15,7 @@ showfunc = 1
 
 [alias]
 log = log -v -T git
-lg = ! $HG log -G -T gitshort '$@' | sed '/^[| :\n\\]*$/d' 2>/dev/null | $PAGER
+lg = ! $HG log -G -T gitshort '$@' | sed '/^[| :\n]*$/d' 2>/dev/null | $PAGER
 grrep = ! $HG files -0 $2 $3 $4 $5 $6 $7 $8 $9 | xargs -0 grep --color=always -n -H '$1' | $PAGER
 show = log --stat -v -p --template=phases -r $1
 contains = log -r $1 --template="{latesttag}\n"

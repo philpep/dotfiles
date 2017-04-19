@@ -35,7 +35,7 @@ publish = False
 new-commit = draft
 
 [revsetalias]
-pub = heads(public()) and branch(.)
+pub = heads(public() and branch(.))
 wip = sort(ancestors(.) and draft(), -rev)
 origin = last(wip)
 

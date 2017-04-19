@@ -24,7 +24,7 @@ contains = log -r $1 --template="{latesttag}\n"
 wdiff = ! $HG diff $@ | wdiff -n -d -w '[31m' -x '[0m' -y '[32m' -z '[0m' | sed -e 's:^@@:[35m@@:' -e 's:@@$:@@[0m:' -e 's:^diff -r:[35;1mdiff -r:' | $PAGER
 shortlog = !$HG log -T '{author}\n' $@ | sort | uniq -c | sort -rn | $PAGER
 review = show-review -r 'ancestors(.) and draft()'
-undo = revert --no-backup
+revert = revert --no-backup
 
 [pager]
 attend-help = true

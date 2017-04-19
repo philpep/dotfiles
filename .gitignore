@@ -4,3 +4,4 @@ vim/backup
 vim/spell
 vim/bundle
 vim/.netrwhist
+hgrc.d/local.hgrc

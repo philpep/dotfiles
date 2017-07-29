@@ -68,18 +68,6 @@ else
 	set dir=$HOME/.vim/swap
 endif
 
-filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-
-"Bundle 'gmarik/vundle'
-Bundle 'scrooloose/syntastic'
-Bundle 'Glench/Vim-Jinja2-Syntax'
-Bundle 'philpep/vim-rst-tables'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'saltstack/salt-vim'
-Bundle 'altercation/vim-colors-solarized'
-
 filetype plugin indent on
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -115,8 +103,6 @@ runtime ftplugin/man.vim
 nnoremap K :Man <cword><CR>
 let $PAGER='less'
 let $MANPAGER='less'
-let g:syntastic_disabled_filetypes=['html']
-let g:syntastic_python_checkers = ['python', 'flake8']
 
 " Mappings
 map <F5> <Esc>gg=G''

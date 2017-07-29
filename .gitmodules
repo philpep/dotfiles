@@ -1,3 +1,21 @@
 [submodule "vim/bundle/vundle"]
 	path = vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
+[submodule "pack/git-plugins/start/ale"]
+	path = pack/git-plugins/start/ale
+	url = https://github.com/w0rp/ale.git
+[submodule "pack/git-plugins/start/vim-rst-tables"]
+	path = pack/git-plugins/start/vim-rst-tables
+	url = https://github.com/philpep/vim-rst-tables
+[submodule "pack/git-plugins/start/Vim-Jinja2-Syntax"]
+	path = pack/git-plugins/start/Vim-Jinja2-Syntax
+	url = https://github.com/Glench/Vim-Jinja2-Syntax
+[submodule "pack/git-plugins/start/vim-golang"]
+	path = pack/git-plugins/start/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang
+[submodule "pack/git-plugins/start/salt-vim"]
+	path = pack/git-plugins/start/salt-vim
+	url = https://github.com/saltstack/salt-vim
+[submodule "pack/git-plugins/start/vim-colors-solarized"]
+	path = pack/git-plugins/start/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized

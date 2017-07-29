@@ -48,6 +48,7 @@ purge =
 strip =
 patchbomb =
 terse-status = ~/.hgrc.d/terse-status.py
+evolve =
 
 [merge-tools]
 vimdiff.excutable = vim

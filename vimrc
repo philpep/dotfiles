@@ -109,4 +109,5 @@ map <F5> <Esc>gg=G''
 map ,,c :python ReformatTable()<CR>
 map ,,f :python ReflowTable()<CR>
 
-"colo desert
+" keep lint column open
+let g:ale_sign_column_always = 1

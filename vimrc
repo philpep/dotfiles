@@ -109,6 +109,9 @@ map <F5> <Esc>gg=G''
 map ,,c :python ReformatTable()<CR>
 map ,,f :python ReflowTable()<CR>
 
-" keep lint column open
-let g:ale_sign_column_always = 1
+" let g:ale_sign_column_always = 1
 let g:ale_linters = {'python': ['flake8', 'yafp']}
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)

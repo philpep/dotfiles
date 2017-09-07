@@ -37,6 +37,10 @@ watch=all
 
 bindkey -e
 
+autoload -Uz compinit
+compinit
+
+
 case `uname -s` in
   FreeBSD)
   export LC_ALL="en_US.UTF-8"
@@ -95,9 +99,6 @@ alias -s pdf="epdfview"
 alias -s png="eog"
 alias -s jpg="eog"
 alias -s gif="eog"
-
-autoload -Uz compinit
-compinit
 
 zmodload zsh/complist
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'

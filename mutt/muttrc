@@ -1,0 +1,133 @@
+# Paths & mailbox
+set editor = "~/.mutt/editor"
+set header_cache = ~/.cache/mutt
+set message_cachedir = ~/.cache/mutt
+set certificate_file = ~/.cache/mutt/certificates
+set news_cache_dir = ~/.cache/mutt
+set tmpdir = ~/.cache/mutt
+set mailcap_path = ~/.mutt/mailcap
+set signature = ~/.mutt/signature
+set sendmail="msmtp"
+set folder = ~/.mail
+set mbox_type = Maildir
+set record = "+INBOX"
+set query_command= "notmuch-addrlookup --mutt '%s'"
+
+# Accounts
+set virtual_spoolfile = yes
+source ~/.mutt/local.muttrc
+
+# Colors
+source ~/.mutt/solarized.muttrc
+source ~/.mutt/colorized-patches.muttrc
+
+# Misc
+unset wait_key
+set timeout = 5
+set mail_check = 0
+set mail_check_stats
+set mail_check_stats_interval = 10
+set delete
+unset confirmappend
+unset mark_old
+set beep_new
+set pipe_decode
+set thorough_search
+set sleep_time = 0
+set use_envelope_from
+set include
+set auto_tag
+
+# Index View
+set date_format = "%d/%m/%Y"
+set index_format = "[%Z]  %D  %-20.20F  %s"
+set sort = threads
+set sort_aux = last-date-received
+set sort_browser = reverse-date
+set uncollapse_jump
+set sort_re
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+# Pager View
+set pager_index_lines = 10
+set pager_context = 3
+set pager_stop
+set menu_scroll
+set tilde
+unset markers
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+auto_view text/html text/Html
+
+# Compose View
+set envelope_from
+set sig_dashes
+set edit_headers
+set fast_reply
+set askcc
+set fcc_attach
+# Ask if we want to forward messages as attachments
+# # (generally want the message body included directly)
+set mime_forward = ask-no
+set forward_format = "Fwd: %s"
+set forward_decode
+set attribution = "On %d, %n wrote:"
+set reply_to
+set reverse_name
+set include
+set forward_quote
+
+# Headers
+ignore *
+unignore from: to: cc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: date: subject:
+
+# GPG
+source /usr/share/doc/mutt/examples/gpg.rc
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = EFD72092
+set pgp_timeout = 3600
+set crypt_replyencrypt = yes
+#set crypt_autosign = yes
+
+# Sidebar
+set sidebar_visible = yes
+set sidebar_width   = 25
+set sidebar_format = "%B %* %?N?%N?"
+set sidebar_folder_indent
+set sidebar_indent_string = ' '
+set sidebar_short_path
+set sidebar_delim_chars = '-/'
+
+# Status bar
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+# Key bindings & macros
+bind index,pager <left> previous-entry
+bind index,pager <right> next-entry
+bind index <up> previous-entry
+bind index <down> next-entry
+bind pager <up> previous-line
+bind pager <down> next-line
+bind index g noop
+bind index gg first-entry
+bind index G last-entry
+bind index,pager r group-reply  # always reply to all
+
+bind index,pager \Cn sidebar-next
+bind index,pager \Cp sidebar-prev
+bind index,pager \Ce sidebar-open
+
+macro index,pager $ "<shell-escape>mbsync -a && ~/.mutt/notmuch.sh<enter><sync-mailbox>" "Sync mailbox"
+macro index,pager d "<save-message>=Trash<enter><pipe-message>notmuch-mutt tag -- -inbox -unread<enter>" "Move to Trash"
+macro index,pager ! "<save-message>=Spam<enter><pipe-message>notmuch-mutt tag -- -inbox -unread +spam<enter>" "Move to Spam"
+macro index <F8> \
+    "<shell-escape>notmuch-mutt -r --prompt search<enter>\
+    <change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>"\
+    "notmuch: search mail"
+macro index <F9> \
+    "<pipe-message>notmuch-mutt -r thread<enter>\
+    <change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>"\
+    "notmuch: reconstruct thread"

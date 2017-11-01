@@ -1,0 +1,22 @@
+#!/bin/sh
+# Async editor hack for mutt
+# Usage: set editor=/path/to/this/script
+# It spawn editor in a new background terminal so I can continue reading mail
+# while editing.
+# The title of the terminal is set to "mutt-edit", this allow me to make it
+# floating in i3 with:
+# for_window [title="mutt-edit"] floating enable
+
+set -e
+
+if test -n "$DISPLAY" && test -z "$MUTTEDIT"; then
+    # copy and edit in a new location since mutt will remove it's draft file
+    # ($1) after this shell script exit.
+    draft=$1.mutt-edit
+    cp $1 $draft
+    xfce4-terminal --title mutt-edit -e \
+        "/bin/sh -c \"MUTTEDIT=yes mutt -e 'set autoedit=yes; unset signature' -H $draft; \
+            rm -f $draft\"" &
+else
+    vim -c ':set ft=mail spell spelllang=en,fr' $1
+fi

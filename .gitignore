@@ -5,3 +5,6 @@ vim/spell
 vim/bundle
 vim/.netrwhist
 hgrc.d/local.hgrc
+mutt/local.muttrc
+mutt/signature
+mutt/notmuch.sh

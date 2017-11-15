@@ -114,6 +114,9 @@ bind pager <down> next-line
 bind index g noop
 bind index gg first-entry
 bind index G last-entry
+bind pager g noop
+bind pager gg top
+bind pager G bottom
 bind index,pager r group-reply  # always reply to all
 
 bind index,pager \Cn sidebar-next

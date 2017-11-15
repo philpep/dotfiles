@@ -80,6 +80,7 @@ set forward_quote
 # Headers
 ignore *
 unignore from: to: cc: date: subject:
+unignore x-spam-flag: x-spam: user-agent:
 unhdr_order *
 hdr_order from: to: cc: date: subject:
 

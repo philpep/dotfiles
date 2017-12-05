@@ -1,10 +1,10 @@
 # Paths & mailbox
 set editor = "~/.mutt/editor"
-set header_cache = ~/.cache/mutt
-set message_cachedir = ~/.cache/mutt
+set header_cache = ~/.cache/mutt/headers
+set message_cachedir = ~/.cache/mutt/messages
 set certificate_file = ~/.cache/mutt/certificates
 set news_cache_dir = ~/.cache/mutt
-set tmpdir = ~/.cache/mutt
+set tmpdir = ~/.cache/mutt/tmp
 set mailcap_path = ~/.mutt/mailcap
 set signature = ~/.mutt/signature
 set sendmail="msmtp"

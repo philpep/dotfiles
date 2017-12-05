@@ -85,7 +85,7 @@ unhdr_order *
 hdr_order from: to: cc: date: subject:
 
 # GPG
-source /usr/share/doc/mutt/examples/gpg.rc
+source ~/.mutt/gpg.rc
 set pgp_use_gpg_agent = yes
 set pgp_sign_as = EFD72092
 set pgp_timeout = 3600

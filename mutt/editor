@@ -15,7 +15,7 @@ if test -n "$DISPLAY" && test -z "$MUTTEDIT"; then
     draft=$1.mutt-edit
     cp $1 $draft
     xfce4-terminal --title mutt-edit -e \
-        "/bin/sh -c \"MUTTEDIT=yes mutt -e 'set autoedit=yes; unset signature' -H $draft; \
+        "/bin/sh -c \"MUTTEDIT=yes neomutt -e 'set autoedit=yes; unset signature' -H $draft; \
             rm -f $draft\"" &
 else
     vim -c ':set ft=mail spell spelllang=en,fr' $1

@@ -41,7 +41,7 @@ set auto_tag
 set date_format = "%d/%m/%Y"
 set index_format = "[%Z]  %D  %-20.20F  %s"
 set sort = threads
-set sort_aux = last-date-received
+set sort_aux = last-date-sent
 set sort_browser = reverse-date
 set uncollapse_jump
 set sort_re

@@ -6,7 +6,6 @@ set certificate_file = ~/.cache/mutt/certificates
 set news_cache_dir = ~/.cache/mutt
 set tmpdir = ~/.cache/mutt/tmp
 set mailcap_path = ~/.mutt/mailcap
-set signature = ~/.mutt/signature
 set sendmail="msmtp"
 set folder = ~/.mail
 set mbox_type = Maildir

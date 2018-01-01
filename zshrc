@@ -71,6 +71,7 @@ case `uname -s` in
   alias ll='ls --color=auto -lh'
   alias lla='ls --color=auto -lha'
   alias lll='ls --color=auto -lh | less'
+  alias vim='TERM=xterm-256color vim'
   which chg 2>/dev/null >/dev/null && alias hg=chg
   alias grep='grep --color=auto'
   export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""

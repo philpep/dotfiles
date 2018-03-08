@@ -25,6 +25,7 @@ wdiff = ! $HG diff $@ | wdiff -n -d -w '[31m' -x '[0m' -y '[32m' -z '[0m' | 
 shortlog = !$HG log -T '{author}\n' $@ | sort | uniq -c | sort -rn | $PAGER
 review = show-review -r 'ancestors(.) and draft()'
 revert = revert --no-backup
+describe = log -T "{sub(':.*', '', '{latesttag}')}{sub('^-0-.*', '', '-{latesttagdistance}-hg{shortest(node, 7)}')}\n"
 
 [pager]
 attend-help = true

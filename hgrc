@@ -37,11 +37,12 @@ publish = False
 new-commit = draft
 
 [revsetalias]
-pub = heads(public() and branch(.))
-wip = sort(ancestors(.) and draft(), -rev)
+pub = heads(public()) and branch(.)
+wip = ancestors(.) and draft()
 origin = last(wip)
 
 [extensions]
+show =
 pager =
 color =
 rebase =
@@ -51,6 +52,7 @@ histedit =
 purge =
 strip =
 patchbomb =
+schemes =
 terse-status = ~/.hgrc.d/terse-status.py
 evolve =
 
@@ -61,3 +63,6 @@ vimdiff.premerge = keep
 
 [experimental]
 graphshorten=true
+
+[subrepos]
+git:allowed = true

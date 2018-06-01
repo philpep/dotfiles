@@ -37,6 +37,7 @@ watch=all
 
 bindkey -e
 
+fpath=(~/.zsh/functions $fpath)
 autoload -Uz compinit
 compinit
 

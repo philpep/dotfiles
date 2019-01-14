@@ -35,7 +35,7 @@ publish = False
 new-commit = draft
 
 [revsetalias]
-pub = heads(public()) and branch(.)
+pub = heads(public()) and branch(.) and not closed()
 wip = ancestors(.) and draft()
 
 [extensions]

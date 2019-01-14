@@ -54,6 +54,11 @@ terse-status = ~/.hgrc.d/terse-status.py
 evolve =
 topic =
 bookmarks =
+phabricator =
+absorb =
+
+[phabsend]
+confirm = true
 
 [merge-tools]
 vimdiff.excutable = vim

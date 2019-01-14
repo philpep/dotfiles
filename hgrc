@@ -12,6 +12,7 @@ gitshort = '\033[31m{shortest(node, 7)}\033[0m - \033[95m{ifeq(phase, "public", 
 [diff]
 git = 1
 showfunc = 1
+word-diff = true
 
 [alias]
 log = log -v -T git

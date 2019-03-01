@@ -1,6 +1,6 @@
 application/octet-stream ; echo %s "can be anything..."                    ; copiousoutput
-text/html                ; /usr/bin/elinks -dump %s ; nametemplate=%s.html ; copiousoutput
-application/pdf          ; /usr/bin/google-chrome %s                       ; copiousoutput
-image/*                  ; /usr/bin/google-chrome %s                       ; copiousoutput
-audio/*                  ; /usr/bin/google-chrome %s                       ; copiousoutput
-video/*                  ; /usr/bin/google-chrome %s                       ; copiousoutput
+text/html                ; elinks -dump %s ; nametemplate=%s.html ; copiousoutput
+application/pdf          ; firefox %s                       ; copiousoutput
+image/*                  ; firefox %s                       ; copiousoutput
+audio/*                  ; firefox %s                       ; copiousoutput
+video/*                  ; firefox %s                       ; copiousoutput

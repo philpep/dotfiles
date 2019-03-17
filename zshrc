@@ -1,27 +1,14 @@
 #!/usr/bin/env zsh
-# /etc/zsh/zshrc
-# Global zsh configuration
-#    _________  _   _ ____   ____ 
-#   |__  / ___|| | | |  _ \ / ___|
-#     / /\___ \| |_| | |_) | |    
-#    / /_ ___) |  _  |  _ <| |___ 
-#   /____|____/|_| |_|_| \_\\____|
-#                                 
-# philpep zshrc
-# http://philpep.org
-# Thanks to Geekounet http://poildetroll.net
-
 export EDITOR=vim
 export GREP_COLOR=31
 export PYTHONSTARTUP=~/.pythonstartup
-export NPM_PACKAGES="$HOME/.local/node_modules"
 export DEBEMAIL=phil@philpep.org
 export DEBFULLNAME="Philippe Pepiot"
 # cubicweb
 export CW_MODE=user
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt append_history hist_ignore_all_dups hist_reduce_blanks
 setopt autocd
 unsetopt beep
@@ -74,7 +61,7 @@ case `uname -s` in
   which chg 2>/dev/null >/dev/null && alias hg=chg
   alias grep='grep --color=auto'
   export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""
-  export PATH="$HOME/.local/bin:$NPM_PACKAGES/bin:$HOME/go/bin:$HOME/bin:/usr/lib/postgresql/9.6/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+  export PATH="$HOME/.local/bin:$HOME/.local/node_modules/bin:$HOME/go/bin:$HOME/bin:/usr/lib/postgresql/9.6/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
   export PAGER='less -FRXS'
   alias cp='cp -v'
   alias mv='mv -v'

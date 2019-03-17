@@ -102,6 +102,7 @@ set sidebar_delim_chars = '-/'
 
 # Status bar
 set status_chars  = " *%A"
+set new_mail_command = "notify-send 'New Email' '%n new messages, %u unread.'"
 set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 
 # Key bindings & macros

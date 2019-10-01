@@ -4,3 +4,4 @@ application/pdf          ; firefox %s                       ; copiousoutput
 image/*                  ; firefox %s                       ; copiousoutput
 audio/*                  ; firefox %s                       ; copiousoutput
 video/*                  ; firefox %s                       ; copiousoutput
+text/calendar; perl ~/.mutt/ical2txt.pl '%s' 2>/dev/null; copiousoutput

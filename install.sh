@@ -14,3 +14,6 @@ done
 mkdir -p $HOME/.config/xfce4/terminal
 ln -fsn $HERE/xfce4-terminalrc $HOME/.config/xfce4/terminal/terminalrc
 mkdir -p $HOME/.cache/mutt
+
+mkdir -p $HOME/.config/yamllint
+ln -fsn $HERE/yamllint $HOME/.config/yamllint/config

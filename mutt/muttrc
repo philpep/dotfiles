@@ -135,3 +135,6 @@ macro index <F9> \
     "<pipe-message>notmuch-mutt -r thread<enter>\
     <change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>"\
     "notmuch: reconstruct thread"
+macro index C \
+    "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+    "mark all new as read"

@@ -38,6 +38,10 @@ new-commit = draft
 pub = heads(public()) and branch(.) and not closed()
 wip = ancestors(.) and draft()
 
+[color]
+changeset.public = red
+changeset.draft = blue
+
 [extensions]
 show =
 pager =

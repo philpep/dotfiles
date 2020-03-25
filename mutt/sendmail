@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+/usr/share/doc/msmtp/examples/msmtpqueue/msmtp-enqueue.sh $@
+/usr/share/doc/msmtp/examples/msmtpqueue/msmtp-runqueue.sh

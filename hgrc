@@ -54,7 +54,6 @@ purge =
 strip =
 patchbomb =
 schemes =
-terse-status = ~/.hgrc.d/terse-status.py
 evolve =
 topic =
 bookmarks =

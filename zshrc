@@ -82,7 +82,7 @@ alias exit="clear; exit"
 alias top-10="sed -e 's/sudo //' $HOME/.histfile |  cut -d' ' -f1 | sort | uniq -c | sort -rg | head"
 
 # per extentions
-alias -s pdf="epdfview"
+alias -s pdf="evince"
 alias -s png="eog"
 alias -s jpg="eog"
 alias -s gif="eog"

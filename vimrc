@@ -87,6 +87,8 @@ autocmd BufRead,BufNewFile *.pgc set ft=c
 autocmd BufRead,BufNewFile *.pde set ft=c
 autocmd BufRead,BufNewFile *.j2 set ft=jinja
 autocmd BufRead,BufNewFile *.go set noet nolist
+autocmd BufRead,BufNewFile Jenkinsfile set et sw=2 ts=2 tw=0 smarttab list
+autocmd BufRead,BufNewFile Dockerfile set tw=0 smarttab et list
 syntax on
 set background=dark
 if &diff

@@ -9,3 +9,6 @@ junit*.xml
 .local
 .cache
 test/data/database/*tmpdb*
+node_modules
+.pytest_cache
+.coverage

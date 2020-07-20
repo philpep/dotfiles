@@ -8,3 +8,6 @@ __pycache__
 junit*.xml
 .local
 .cache
+node_modules
+.pytest_cache
+.coverage

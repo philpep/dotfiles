@@ -19,3 +19,6 @@
 [submodule "vim/pack/git-plugins/start/elm-vim"]
 	path = vim/pack/git-plugins/start/elm-vim
 	url = https://github.com/ElmCast/elm-vim
+[submodule "vim/pack/git-plugins/start/vim-prettier"]
+	path = vim/pack/git-plugins/start/vim-prettier
+	url = https://github.com/prettier/vim-prettier

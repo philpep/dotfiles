@@ -15,6 +15,9 @@ set novisualbell
 set history=100
 set undolevels=150
 
+" Case insentisive for file completion
+set wildignorecase
+
 " hilight
 set hls
 
@@ -87,6 +90,7 @@ autocmd BufRead,BufNewFile *.pgc set ft=c
 autocmd BufRead,BufNewFile *.pde set ft=c
 autocmd BufRead,BufNewFile *.j2 set ft=jinja
 autocmd BufRead,BufNewFile *.go set noet nolist
+autocmd BufNewFile,BufRead *.tsx,*.jsx,*.ts set filetype=typescript.tsx tw=0 smarttab et list
 autocmd BufRead,BufNewFile Jenkinsfile set et sw=2 ts=2 tw=0 smarttab list
 autocmd BufRead,BufNewFile Dockerfile set tw=0 smarttab et list
 syntax on
@@ -113,8 +117,11 @@ map ,,c :python ReformatTable()<CR>
 map ,,f :python ReflowTable()<CR>
 
 " let g:ale_sign_column_always = 1
-let g:ale_linters = {'python': ['flake8', 'yafp']}
+let g:ale_linters = {'python': ['flake8', 'yafp', 'mypy']}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" load all plugins
+packloadall

@@ -12,3 +12,6 @@ test/data/database/*tmpdb*
 node_modules
 .pytest_cache
 .coverage
+.eggs
+.pytype
+.mypy_cache

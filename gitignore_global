@@ -11,3 +11,6 @@ junit*.xml
 node_modules
 .pytest_cache
 .coverage
+.eggs
+.pytype
+.mypy_cache

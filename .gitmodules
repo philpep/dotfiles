@@ -10,15 +10,9 @@
 [submodule "pack/git-plugins/start/vim-golang"]
 	path = vim/pack/git-plugins/start/vim-golang
 	url = https://github.com/jnwhiteh/vim-golang
-[submodule "pack/git-plugins/start/salt-vim"]
-	path = vim/pack/git-plugins/start/salt-vim
-	url = https://github.com/saltstack/salt-vim
 [submodule "pack/git-plugins/start/vim-colors-solarized"]
 	path = vim/pack/git-plugins/start/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized
-[submodule "vim/pack/git-plugins/start/elm-vim"]
-	path = vim/pack/git-plugins/start/elm-vim
-	url = https://github.com/ElmCast/elm-vim
 [submodule "vim/pack/git-plugins/start/vim-prettier"]
 	path = vim/pack/git-plugins/start/vim-prettier
 	url = https://github.com/prettier/vim-prettier

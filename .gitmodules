@@ -7,9 +7,6 @@
 [submodule "pack/git-plugins/start/Vim-Jinja2-Syntax"]
 	path = vim/pack/git-plugins/start/Vim-Jinja2-Syntax
 	url = https://github.com/Glench/Vim-Jinja2-Syntax
-[submodule "pack/git-plugins/start/vim-golang"]
-	path = vim/pack/git-plugins/start/vim-golang
-	url = https://github.com/jnwhiteh/vim-golang
 [submodule "pack/git-plugins/start/vim-colors-solarized"]
 	path = vim/pack/git-plugins/start/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized

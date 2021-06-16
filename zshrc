@@ -82,6 +82,8 @@ alias more='less -r'
 alias c='clear'
 alias exit="clear; exit"
 alias top-10="sed -e 's/sudo //' $HOME/.histfile |  cut -d' ' -f1 | sort | uniq -c | sort -rg | head"
+alias libreoffice="libreoffice --norestore"
+alias localc="localc --norestore"
 
 # per extentions
 alias -s pdf="evince"

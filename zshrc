@@ -25,6 +25,8 @@ bindkey -e
 fpath=(~/.zsh/functions $fpath)
 autoload -Uz compinit
 compinit
+command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
+
 
 
 case `uname -s` in

@@ -75,6 +75,8 @@ set reply_to
 set reverse_name
 set include
 set forward_quote
+# handle unicode attachements filenames
+set rfc2047_parameters
 
 # Headers
 ignore *

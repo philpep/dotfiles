@@ -81,6 +81,7 @@ autocmd BufReadPost *
 			\ endif
 
 autocmd Filetype python set tw=0 smarttab et list
+autocmd Filetype sql set tw=0 smarttab et list
 autocmd Filetype yaml set ts=2 sw=2 tw=0 smarttab et list
 autocmd Filetype javascript set tw=0 smarttab et list
 autocmd Filetype dosini set tw=0 smarttab et list
@@ -94,7 +95,7 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx,*.ts set filetype=typescript.tsx tw=0 sma
 autocmd BufRead,BufNewFile Jenkinsfile set et sw=2 ts=2 tw=0 smarttab list
 autocmd BufRead,BufNewFile Dockerfile set tw=0 smarttab et list
 syntax on
-set background=dark
+set background=light
 if &diff
 	colorscheme evening
 else
@@ -118,12 +119,17 @@ map ,,f :python ReflowTable()<CR>
 
 " let g:ale_sign_column_always = 1
 let g:ale_linters = {'python': ['flake8', 'yafp', 'mypy']}
-let g:ale_fixers = {'python': ['black'], 'text': []}
+let g:ale_fixers = {'python': ['isort', 'black'], 'javascript': ['prettier'], 'text': []}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+"noremap <Up> <Nop>
+"noremap <Down> <Nop>
+"noremap <Left> <Nop>
+"noremap <Right> <Nop>
 
 " load all plugins
 packloadall

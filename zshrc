@@ -6,6 +6,7 @@ export DEBEMAIL=phil@philpep.org
 export DEBFULLNAME="Philippe Pepiot"
 # cubicweb
 export CW_MODE=user
+export DOCKER_HOST=unix:///run/user/$UID/docker.sock
 HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000

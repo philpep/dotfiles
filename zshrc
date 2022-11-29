@@ -4,6 +4,7 @@ export GREP_COLOR=31
 export PYTHONSTARTUP=~/.pythonstartup
 export DEBEMAIL=phil@philpep.org
 export DEBFULLNAME="Philippe Pepiot"
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 # cubicweb
 export CW_MODE=user
 export DOCKER_HOST=unix:///run/user/$UID/docker.sock

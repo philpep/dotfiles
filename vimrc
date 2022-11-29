@@ -71,7 +71,8 @@ else
 	set dir=$HOME/.vim/swap
 endif
 
-filetype plugin indent on
+filetype plugin on
+filetype indent on
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
@@ -91,9 +92,11 @@ autocmd BufRead,BufNewFile *.pgc set ft=c
 autocmd BufRead,BufNewFile *.pde set ft=c
 autocmd BufRead,BufNewFile *.j2 set ft=jinja
 autocmd BufRead,BufNewFile *.go set noet nolist
+autocmd BufRead,BufNewFile *.html set et
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*.ts set filetype=typescript.tsx tw=0 smarttab et list
 autocmd BufRead,BufNewFile Jenkinsfile set et sw=2 ts=2 tw=0 smarttab list
 autocmd BufRead,BufNewFile Dockerfile set tw=0 smarttab et list
+autocmd BufNewFile,BufRead /var/tmp/mutt* set noautoindent filetype=mail wm=0 tw=78 nonumber digraph nolist spelllang=en,fr
 syntax on
 set background=light
 if &diff
@@ -114,7 +117,7 @@ let $MANPAGER='less'
 
 " Mappings
 map <F5> <Esc>gg=G''
-map ,,c :python ReformatTable()<CR>
+map ,,c :EasyAlign*<Bar><Enter>
 map ,,f :python ReflowTable()<CR>
 
 " let g:ale_sign_column_always = 1

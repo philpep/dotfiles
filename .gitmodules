@@ -13,3 +13,6 @@
 [submodule "vim/pack/git-plugins/start/vim-prettier"]
 	path = vim/pack/git-plugins/start/vim-prettier
 	url = https://github.com/prettier/vim-prettier
+[submodule "vim/pack/git-plugins/start/vim-easy-align"]
+	path = vim/pack/git-plugins/start/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align

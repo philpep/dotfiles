@@ -1,6 +1,8 @@
 \set ON_ERROR_ROLLBACK interactive
 \set COMP_KEYWORD_CASE upper
+\set HISTCONTROL ignoredups
 \set HISTFILE ~/.psql_history
+\set HISTSIZE 10000
 
 \pset pager off
 \pset null '(null)'

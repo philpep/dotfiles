@@ -135,4 +135,8 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "noremap <Right> <Nop>
 
 " load all plugins
-packloadall
+packadd! debPlugin
+packadd! detectindent
+packadd! gnupg
+packadd! ale
+packadd! solarized

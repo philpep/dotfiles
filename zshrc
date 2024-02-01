@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 export EDITOR=vim
-export GREP_COLOR=31
+export GREP_COLOR=mt=31
 export PYTHONSTARTUP=~/.pythonstartup
 export DEBEMAIL=phil@philpep.org
 export DEBFULLNAME="Philippe Pepiot"

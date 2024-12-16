@@ -15,8 +15,11 @@ set novisualbell
 set history=100
 set undolevels=150
 
-" Case insentisive for file completion
+" file completion
 set wildignorecase
+"set wildcharm=<tab>
+set wildmenu
+set wildmode=list:longest,full
 
 " hilight
 set hls
@@ -57,29 +60,29 @@ let g:vim_markdown_folding_disabled=1
 " Backup
 set backup
 if filewritable("$HOME/.vim/backup") == 2
-	set backupdir=$HOME/.vim/backup
+    set backupdir=$HOME/.vim/backup
 else
-	call system("mkdir -p $HOME/.vim/backup")
-	set backupdir=$HOME/.vim/backup
+    call system("mkdir -p $HOME/.vim/backup")
+    set backupdir=$HOME/.vim/backup
 endif
 
 " Swap files
 if filewritable("$HOME/.vim/swap") == 2
     set dir=$HOME/.vim/swap
 else
-	call system("mkdir -p $HOME/.vim/swap")
-	set dir=$HOME/.vim/swap
+    call system("mkdir -p $HOME/.vim/swap")
+    set dir=$HOME/.vim/swap
 endif
 
 filetype plugin on
 filetype indent on
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-autocmd BufReadPost *
-			\ if line("'\"") > 0 && line("'\"") <= line("$") |
-			\   exe "normal! g`\"" |
-			\ endif
+"" When editing a file, always jump to the last known cursor position.
+"" Don't do it when the position is invalid or when inside an event handler
+"" (happens when dropping a file on gvim).
+"autocmd BufReadPost *
+"            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+"            \   exe "normal! g`\"" |
+"            \ endif
 
 autocmd Filetype python set tw=0 smarttab et list
 autocmd Filetype sql set tw=0 smarttab et list
@@ -90,22 +93,22 @@ autocmd FileType sh set et list
 autocmd FileType text set tw=78
 autocmd BufRead,BufNewFile *.pgc set ft=c
 autocmd BufRead,BufNewFile *.pde set ft=c
-autocmd BufRead,BufNewFile *.j2 set ft=jinja
+autocmd BufRead,BufNewFile *.j2 set ft=jinja et list
 autocmd BufRead,BufNewFile *.go set noet nolist
 autocmd BufRead,BufNewFile *.html set et
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*.ts set filetype=typescript.tsx tw=0 smarttab et list
-autocmd BufRead,BufNewFile Jenkinsfile set et sw=2 ts=2 tw=0 smarttab list
+autocmd BufRead,BufNewFile Jenkinsfile set et sw=2 ts=2 tw=0 smarttab list ft=groovy
 autocmd BufRead,BufNewFile Dockerfile set tw=0 smarttab et list
 autocmd BufNewFile,BufRead /var/tmp/mutt* set noautoindent filetype=mail wm=0 tw=78 nonumber digraph nolist spelllang=en,fr
 syntax on
 set background=light
 if &diff
-	colorscheme evening
+    colorscheme evening
 else
-	try
-		colorscheme solarized
-	catch /^Vim\%((\a\+)\)\=:E185/
-	endtry
+    try
+        colorscheme solarized
+    catch /^Vim\%((\a\+)\)\=:E185/
+    endtry
 endif
 
 
@@ -120,14 +123,57 @@ map <F5> <Esc>gg=G''
 map ,,c :EasyAlign*<Bar><Enter>
 map ,,f :python ReflowTable()<CR>
 
-" let g:ale_sign_column_always = 1
-let g:ale_linters = {'python': ['flake8', 'yafp', 'mypy']}
-let g:ale_fixers = {'python': ['isort', 'black'], 'javascript': ['prettier'], 'text': []}
+"let g:ale_sign_column_always = 1
+" linters = flake8, mypy
+let g:ale_linters = {
+    \ 'python': ['pylsp', 'ruff', 'mypy'],
+    \ 'typescriptreact': ['eslint', 'tsserver'],
+    \ 'typescript': ['eslint', 'tsserver']}
+let g:ale_fixers = {
+    \ 'python': ['isort', 'black'],
+    \ 'typescriptreact': ['prettier', 'eslint'],
+    \ 'typescript': ['prettier', 'eslint']}
+let g:ale_python_pylsp_config = {
+    \ 'pylsp': {
+    \   'plugins': {
+    \     'autopep8': {'enabled': v:false},
+    \     'flake8': {'enabled': v:false},
+    \     'jedi_completion': {'enabled': v:false},
+    \     'jedi_definition': {'enabled': v:true},
+    \     'jedi_hover': {'enabled': v:false},
+    \     'jedi_references': {'enabled': v:false},
+    \     'jedi_signature_help': {'enabled': v:false},
+    \     'jedi_symbols': {'enabled': v:false},
+    \     'mccabe': {'enabled': v:false},
+    \     'preload': {'enabled': v:false},
+    \     'pycodestyle': {'enabled': v:false},
+    \     'pydocstyle': {'enabled': v:false},
+    \     'pyflakes': {'enabled': v:false},
+    \     'pylint': {'enabled': v:false},
+    \     'rope_autoimport': {'enabled': v:false},
+    \     'rope_completion': {'enabled': v:false},
+    \     'yapf': {'enabled': v:false},
+    \     'isort': {'enabled': v:false},
+    \     'black': {'enabled': v:false},
+    \     'pylsp_mypy': {'enabled': v:false},
+    \   }
+    \  }
+    \}
+"let $ESLINT_D_PPID = getpid()
+"let g:ale_javascript_eslint_executable = 'eslint_d'
+"let g:ale_javascript_eslint_use_global = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
+let g:ale_virtualtext_cursor = 'disabled'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> gd <Plug>(ale_go_to_definition)
+nmap <silent> gD <Plug>(ale_go_to_definition_in_split)
+
+let g:lightline = {
+  \ 'colorscheme': 'solarized',
+  \ }
 
 "noremap <Up> <Nop>
 "noremap <Down> <Nop>
@@ -138,5 +184,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 packadd! debPlugin
 packadd! detectindent
 packadd! gnupg
-packadd! ale
 packadd! solarized
+packadd! nerd-commenter
+packadd! ale
+packadd! lightline

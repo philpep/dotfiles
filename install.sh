@@ -6,9 +6,14 @@ set -e
 
 HERE=$(dirname $(readlink -f $0))
 
-for f in gitconfig tmux.conf vim zsh vimrc zshrc pythonstartup gitignore_global hgrc hgignore_global hgrc.d i3 gemrc mutt psqlrc; do
+for f in gitconfig tmux.conf vim zsh vimrc zshrc pythonstartup gitignore_global hgrc hgignore_global hgrc.d gemrc mutt psqlrc; do
     echo ln -fsn $HERE/$f $HOME/.$f
     ln -fsn $HERE/$f $HOME/.$f
+done
+
+for f in i3 sway; do
+    echo ln -fsn $HERE/$f $HOME/.config/$f
+    ln -fsn $HERE/$f $HOME/.config/$f
 done
 
 mkdir -p $HOME/.config/xfce4/terminal

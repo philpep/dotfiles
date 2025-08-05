@@ -11,7 +11,7 @@ for f in gitconfig tmux.conf vim zsh vimrc zshrc pythonstartup gitignore_global 
     ln -fsn $HERE/$f $HOME/.$f
 done
 
-for f in i3 sway; do
+for f in i3 sway polybar; do
     echo ln -fsn $HERE/$f $HOME/.config/$f
     ln -fsn $HERE/$f $HOME/.config/$f
 done

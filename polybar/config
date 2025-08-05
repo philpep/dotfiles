@@ -1,0 +1,232 @@
+[colors]
+background = #282A2E
+background-alt = #373B41
+foreground = #C5C8C6
+primary = #F0C674
+secondary = #8ABEB7
+alert = #A54242
+disabled = #707880
+
+[bar/phil]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 24pt
+radius = 6
+
+; dpi = 96
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3pt
+
+border-size = 0pt
+border-color = #00000000
+
+padding-left = 0
+padding-right = 1
+
+module-margin = 0
+
+separator = " "
+separator-foreground = ${colors.disabled}
+
+font-0 = monospace;2
+font-1 = FontAwesome:style=Regular;2
+font-2 = Noto Color Emoji:style=Regular:scale=10;2
+
+
+modules-left = xworkspaces xwindow
+modules-right = pulseaudio battery backlight cpu memory temperature wlan date systray
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+; wm-restack = generic
+; wm-restack = bspwm
+
+override-redirect = false
+wm-restack = i3
+
+; This module is not active by default (to enable it, add it to one of the
+; modules-* list above).
+; Please note that only a single tray can exist at any time. If you launch
+; multiple bars with this module, only a single one will show it, the others
+; will produce a warning. Which bar gets the module is timing dependent and can
+; be quite random.
+; For more information, see the documentation page for this module:
+; https://polybar.readthedocs.io/en/stable/user/modules/tray.html
+[module/systray]
+type = internal/tray
+
+format-margin = 8pt
+tray-spacing = 16pt
+tray-position = right
+
+[module/xworkspaces]
+type = internal/xworkspaces
+
+label-active = %name%
+label-active-background = ${colors.background-alt}
+label-active-underline= ${colors.primary}
+label-active-padding = 1
+
+label-occupied = %name%
+label-occupied-padding = 1
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = ${colors.disabled}
+label-empty-padding = 1
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:60:...%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+use-ui-max = true
+interval = 5
+format-volume = <label-volume> <ramp-volume>
+label-muted = 🔇 muted
+label-muted-foreground = #ffffff
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+click-right = pavucontrol
+format-volume-background = #f1c40f
+format-volume-foreground = #000000
+format-volume-padding = 10px
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-suffix = " "
+format-prefix-foreground = ${colors.primary}
+label = %percentage_used:2%%
+format-background = #9b59b6
+format-foreground = #ffffff
+format-padding = 10px
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-suffix = " "
+format-prefix-foreground = ${colors.primary}
+label = %percentage:2%%
+format-background = #2ecc71
+format-foreground = #000000
+format-padding = 10px
+
+[network-base]
+type = internal/network
+interval = 5
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
+format-connected-background = #2980b9
+format-disconnected-background = #2980b9
+format-connected-foreground = #ffffff
+format-disconnected-foreground = #ffffff
+format-connected-padding = 10px
+format-disconnected-padding = 10px
+
+[module/wlan]
+inherit = network-base
+interface-type = wireless
+format-connected = <label-connected> 
+label-connected = %essid% (%signal%%)
+
+
+[module/date]
+type = internal/date
+interval = 10
+
+date = %Y-%m-%d %H:%M
+
+label = %date%
+format-background = #64727d
+format-foreground = #ffffff
+format-padding = 10px
+
+[module/battery]
+type = internal/battery
+full-at = 99
+low-at = 10
+battery = BAT0
+adapter = ADP1
+poll-interval = 5
+time-format = %H:%M
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+label-charging = Charging %percentage%%
+label-discharging = Discharging %percentage%%
+label-full =
+label-low = BATTERY LOW
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+bar-capacity-width = 10
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+animation-discharging-framerate = 500
+animation-low-0 = !
+animation-low-1 = 
+animation-low-framerate = 200
+
+[module/backlight]
+type = internal/backlight
+use-actual-brightness = true
+poll-interval = 0
+enable-scroll = true
+scroll-interval = 5
+format = <ramp>
+ramp-0 = 🌕
+ramp-1 = 🌖
+ramp-2 = 🌗
+ramp-3 = 🌘
+ramp-4 = 🌑
+#ramp-foreground = #FFFF00
+
+[module/temperature]
+type = internal/temperature
+interval = 1
+thermal-zone = 0
+zone-type = acpitz
+hwmon-path = /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon7/temp1_input
+base-temperature = 20
+warn-temperature = 80
+units = true
+format = <label> <ramp>
+format-warn = <ramp> <label-warn>
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = #f00
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+format-background = #ffaa00
+format-foreground = #000000
+format-padding = 10px
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+; vim:ft=dosini

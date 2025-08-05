@@ -127,12 +127,13 @@ map ,,f :python ReflowTable()<CR>
 " linters = flake8, mypy
 let g:ale_linters = {
     \ 'python': ['pylsp', 'ruff', 'mypy'],
-    \ 'typescriptreact': ['eslint', 'tsserver'],
-    \ 'typescript': ['eslint', 'tsserver']}
+    \ 'typescriptreact': ['biome', 'tsserver'],
+    \ 'typescript': ['biome', 'tsserver'],
+    \ 'yaml': ['yamllint']}
 let g:ale_fixers = {
-    \ 'python': ['isort', 'black'],
-    \ 'typescriptreact': ['prettier', 'eslint'],
-    \ 'typescript': ['prettier', 'eslint']}
+    \ 'python': ['ruff', 'ruff_format'],
+    \ 'typescriptreact': ['biome'],
+    \ 'typescript': ['biome']}
 let g:ale_python_pylsp_config = {
     \ 'pylsp': {
     \   'plugins': {
@@ -173,7 +174,19 @@ nmap <silent> gD <Plug>(ale_go_to_definition_in_split)
 
 let g:lightline = {
   \ 'colorscheme': 'solarized',
+  \ 'component_function': {
+  \   'filename': 'LightlineFilename',
   \ }
+  \ }
+
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 "noremap <Up> <Nop>
 "noremap <Down> <Nop>

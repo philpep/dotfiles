@@ -64,6 +64,7 @@ case `uname -s` in
   alias vim='TERM=xterm-256color vim'
   which chg 2>/dev/null >/dev/null && alias hg=chg
   alias grep='grep --color=auto'
+  export GROFF_NO_SGR=1
   export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""
   export PATH="$HOME/.local/bin:$HOME/.local/node_modules/bin:$HOME/go/bin:$HOME/bin:/usr/lib/postgresql/11/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
   export PAGER='less -FRXS'

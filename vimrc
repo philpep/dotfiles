@@ -115,8 +115,6 @@ endif
 " :Man
 runtime ftplugin/man.vim
 nnoremap K :Man <cword><CR>
-let $PAGER='less'
-let $MANPAGER='less'
 
 " Mappings
 map <F5> <Esc>gg=G''

@@ -28,6 +28,7 @@ compinit
 command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 
 
+typeset -U path PATH
 
 case `uname -s` in
   FreeBSD)
@@ -62,9 +63,8 @@ case `uname -s` in
   alias vim='TERM=xterm-256color vim'
   which chg 2>/dev/null >/dev/null && alias hg=chg
   alias grep='grep --color=auto'
-  export GROFF_NO_SGR=1
-  export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""
-  export PATH="$HOME/.local/bin:$HOME/.local/node_modules/bin:$HOME/go/bin:$HOME/bin:/usr/lib/postgresql/11/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+  # export MANPAGER="/bin/sh -c \"sed -e 's/.$(echo -e '\010')//g' | vim -R -c 'set ft=man nomod nolist' -\""
+  path=(~/.local/bin ~/.local/node_modules/bin ~/bin /sbin /usr/sbin /usr/local/bin /usr/local/sbin $path)
   export PAGER='less -FRXS'
   alias cp='cp -v'
   alias mv='mv -v'
@@ -141,28 +141,36 @@ function precmd
 
   local yellow="%{${fg_bold[yellow]}%}"
 
+  local sandbox=""
+  local init=""
+  [[ -r /proc/1/comm ]] && init="$(</proc/1/comm)"
+
+  if [[ -n $SANDBOX_NAME ]]; then
+    sandbox="%{${fg_bold[yellow]}%}🔒 ${SANDBOX_NAME} "
+  elif [[ $init == bwrap ]]; then
+    sandbox="%{${fg_bold[yellow]}%}🔒 "
+  elif (( ${path[(I)*.sandbox/bin]} )); then
+    sandbox="%{${fg_bold[yellow]}%}🔒 "
+  fi
+
   local return_code="%(?..${deco}!%{${fg_no_bold[red]}%}%?${deco}! )"
   local user_at_host="%{${fg_bold[red]}%}%n${yellow}@%{${deco}%}%m"
   local cwd="%{${deco}%}%48<...<%~"
   local sign="%(!.%{${fg_bold[red]}%}.${deco})%#"
 
-  if readlink -f .local/bin/activate | grep -Eq "^($HOME/venvs/|$HOME/local)"; then
-      source .local/bin/activate
-  else
-      #deactivate >/dev/null 2>&1
-  fi
-
-  if [[ -n ${VIRTUAL_ENV} ]]; then
-    local venv="(`basename $VIRTUAL_ENV`)"
-  else
-    local venv=""
-  fi
-
-  PS1="${return_code}${deco}${venv}(${user_at_host} ${cwd}${git_branch}${deco}) ${sign}%{${reset_color}%} "
+  PS1="${sandbox}${return_code}${deco}(${user_at_host} ${cwd}${git_branch}${deco}) ${sign}%{${reset_color}%} "
 }
 
 __git_files () {
   _wanted files expl 'local files' _files
 }
+
+if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
+ path=(~/adb-fastboot/platform-tools $path)
+fi
+
+command -v direnv 2>/dev/null >/dev/null && eval "$(direnv hook zsh)"
+
+
 
 # vim:filetype=zsh:tabstop=8:shiftwidth=2:fdm=marker:

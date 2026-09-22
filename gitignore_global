@@ -14,3 +14,7 @@ node_modules
 .eggs
 .pytype
 .mypy_cache
+.claude
+.claudeignore
+.envrc
+.sandbox

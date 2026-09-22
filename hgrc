@@ -54,10 +54,10 @@ purge =
 strip =
 patchbomb =
 schemes =
-evolve =
+# evolve =
 topic =
 bookmarks =
-phabricator =
+# phabricator =
 absorb =
 
 [phabsend]

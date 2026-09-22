@@ -5,7 +5,7 @@ set editor = vim
 set mailcap_path = ~/.mutt/mailcap
 set sendmail= ~/.mutt/sendmail
 set mbox_type = Maildir
-set query_command= "notmuch-addrlookup --mutt '%s'"
+set query_command= "notmuch-addrlookup --format=mutt '%s'"
 
 # Accounts
 source ~/.mutt/local.muttrc
@@ -56,6 +56,7 @@ auto_view text/html text/Html text/calendar
 set envelope_from
 set sig_dashes
 set edit_headers
+set autoedit
 set fast_reply
 set askcc
 set fcc_attach

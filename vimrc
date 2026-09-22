@@ -112,10 +112,6 @@ else
 endif
 
 
-" :Man
-runtime ftplugin/man.vim
-nnoremap K :Man <cword><CR>
-
 " Mappings
 map <F5> <Esc>gg=G''
 map ,,c :EasyAlign*<Bar><Enter>
@@ -137,12 +133,12 @@ let g:ale_python_pylsp_config = {
     \   'plugins': {
     \     'autopep8': {'enabled': v:false},
     \     'flake8': {'enabled': v:false},
-    \     'jedi_completion': {'enabled': v:false},
+    \     'jedi_completion': {'enabled': v:true},
     \     'jedi_definition': {'enabled': v:true},
-    \     'jedi_hover': {'enabled': v:false},
-    \     'jedi_references': {'enabled': v:false},
-    \     'jedi_signature_help': {'enabled': v:false},
-    \     'jedi_symbols': {'enabled': v:false},
+    \     'jedi_hover': {'enabled': v:true},
+    \     'jedi_references': {'enabled': v:true},
+    \     'jedi_signature_help': {'enabled': v:true},
+    \     'jedi_symbols': {'enabled': v:true},
     \     'mccabe': {'enabled': v:false},
     \     'preload': {'enabled': v:false},
     \     'pycodestyle': {'enabled': v:false},
@@ -165,10 +161,15 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
 let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
+" use PATH instead of looking for virtualenvs
+let g:ale_use_global_executables = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> gd <Plug>(ale_go_to_definition)
 nmap <silent> gD <Plug>(ale_go_to_definition_in_split)
+nmap <silent> gr <Plug>(ale_find_references)
 
 let g:lightline = {
   \ 'colorscheme': 'solarized',
@@ -186,6 +187,8 @@ function! LightlineFilename()
   return expand('%')
 endfunction
 
+let g:muttquery_command = "notmuch-addrlookup --format=mutt %s"
+
 "noremap <Up> <Nop>
 "noremap <Down> <Nop>
 "noremap <Left> <Nop>
@@ -199,3 +202,4 @@ packadd! solarized
 packadd! nerd-commenter
 packadd! ale
 packadd! lightline
+packadd! mutt-query-complete.vim

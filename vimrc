@@ -203,3 +203,4 @@ packadd! nerd-commenter
 packadd! ale
 packadd! lightline
 packadd! mutt-query-complete.vim
+packadd! vim-ledger
